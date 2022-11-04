@@ -1,67 +1,29 @@
 #include "main.h"
-
 /**
- *
- *  * print_number - prints an integer.
- *
- *   * @n: input integer.
- *
- *    * Return: no return.
- *
- *     */
+ * rot13 - encodes a string using rot13
+ * @s: input string.
+ * Return: the pointer to dest.
+ */
 
-void print_number(int n)
-
+char *rot13(char *s)
 {
+	int i, j;
 
-	unsigned int m, d, count;
+	char *x = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char *y = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-
-
-	if (n < 0)
-
+	for (i = 0; s[i] != '\0'; i++)
 	{
-
-		_putchar(45);
-
-		m = n * -1;
-
+		for (j = 0; x[j] != '\0'; j++)
+		{
+			if (s[i] == x[j])
+			{
+				s[i] = y[j];
+				break;
+			}
+		}
 	}
 
-	else
-
-	{
-
-		m = n;
-
-	}
-
-
-
-	d = m;
-
-	count = 1;
-
-
-
-	while (d > 9)
-
-	{
-
-		d /= 10;
-
-		count *= 10;
-
-	}
-
-
-
-	for (; count >= 1; count /= 10)
-
-	{
-
-		_putchar(((m / count) % 10) + 48);
-
-	}
-
+	return (s);
 }
+
